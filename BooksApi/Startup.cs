@@ -1,4 +1,5 @@
 using BooksApi.Models;
+using BooksApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -25,6 +26,8 @@ namespace BooksApi
 
             services.AddSingleton<IBookstoreDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<BookstoreDatabaseSettings>>().Value);
+
+            services.AddSingleton<BookService>();
 
             services.AddControllers();
         }
